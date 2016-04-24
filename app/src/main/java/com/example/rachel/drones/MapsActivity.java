@@ -156,13 +156,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void initFlightController() {
 
         DJIBaseProduct product = DJIDemoApplication.getProductInstance();
+//        setResultToToast("initFlightController");
+        if(product == null) setResultToToast("product == null");
+//        if(!product.isConnected())setResultToToast("product.isConnected()");
         if (product != null && product.isConnected()) {
+            setResultToToast("product != null && product.isConnected()");
             if (product instanceof DJIAircraft) {
+                setResultToToast("product instanceof DJIAircraft");
                 mFlightController = ((DJIAircraft) product).getFlightController();
             }
         }
 
         if (mFlightController != null) {
+            setResultToToast("mFlightController != null");
             mFlightController.setUpdateSystemStateCallback(new DJIFlightControllerDelegate.FlightControllerUpdateSystemStateCallback() {
 
                 @Override
@@ -204,5 +210,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void getLocation(View view){
         updateDroneLocation();
+    }
+
+    private void setResultToToast(final String string){
+        MapsActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MapsActivity.this, string, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

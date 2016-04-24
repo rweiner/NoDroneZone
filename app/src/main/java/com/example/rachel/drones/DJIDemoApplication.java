@@ -31,7 +31,9 @@ public class DJIDemoApplication extends Application {
 
     public static synchronized DJIBaseProduct getProductInstance() {
         if (null == mProduct) {
+            Log.d("mProduct","Before");
             mProduct = DJISDKManager.getInstance().getDJIProduct();
+
         }
         return mProduct;
     }

@@ -20,18 +20,30 @@ import android.widget.Toast;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.VisibleRegion;
 import com.google.maps.android.geojson.GeoJsonFeature;
+import com.google.maps.android.geojson.GeoJsonGeometry;
 import com.google.maps.android.geojson.GeoJsonLayer;
+import com.google.maps.android.geojson.GeoJsonMultiPolygon;
 import com.google.maps.android.geojson.GeoJsonPointStyle;
+import com.google.maps.android.geojson.GeoJsonPolygon;
 
 import java.util.ArrayList;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import dji.sdk.FlightController.DJIFlightController;
 import dji.sdk.FlightController.DJIFlightControllerDataType;
@@ -43,7 +55,10 @@ import dji.sdk.base.DJIBaseComponent;
 import dji.sdk.base.DJIBaseProduct;
 import dji.sdk.base.DJIError;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, DJIMissionManager.MissionProgressStatusCallback, ActivityCompat.OnRequestPermissionsResultCallback, DJIBaseComponent.DJICompletionCallback{
+import android.graphics.Color;
+
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, DJIMissionManager.MissionProgressStatusCallback,
+        GoogleMap.OnCameraChangeListener, ActivityCompat.OnRequestPermissionsResultCallback, DJIBaseComponent.DJICompletionCallback{
 
     private GoogleMap mMap;
     private boolean mPermissionDenied = false;
@@ -58,6 +73,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private double deviceLat = 0,deviceLon=0;
     private Marker flightMarker = null;
     private double flightLat=0, flightLon=0;
+
+    private GeoJsonLayer layer;
+    private GeoJsonLayer layer2;
+    private GeoJsonLayer layer3;
+    private GeoJsonLayer inView;
+
 
 
 
@@ -144,15 +165,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         //mMap = map;
-
-
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         try {
-            GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.airport, getApplicationContext());
-            layer.addLayerToMap();
-            GeoJsonLayer layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
-            layer2.addLayerToMap();
-           GeoJsonLayer layer3 = new GeoJsonLayer(mMap, R.raw.ca_national_park, getApplicationContext());
-            layer3.addLayerToMap();
+            layer = new GeoJsonLayer(mMap, R.raw.airport, getApplicationContext());
+            layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
+            layer3 = new GeoJsonLayer(mMap, R.raw.ca_national_park, getApplicationContext());
+
+            //layer.getDefaultPolygonStyle().setFillColor(Color.RED);
+            //layer2.getDefaultPolygonStyle().setFillColor(Color.GREEN);
+            //layer3.getDefaultPolygonStyle().setFillColor(Color.BLUE);
         } catch (IOException e) {
 
             //e.printStackTrace();
@@ -161,6 +182,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             System.out.print("ggg");
         }
         mMap.setOnMyLocationButtonClickListener(this);
+        mMap.setOnCameraChangeListener(this);
         mMap.setOnMyLocationChangeListener(myLocationChangeListener);
         enableMyLocation();
         // Add a marker in Sydney and move the camera
@@ -181,6 +203,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             deviceLat = location.getLatitude();
             deviceLon = location.getLongitude();
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
 //            if(mMap != null){
 //                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
 //            }
@@ -307,6 +330,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         weatherTask.execute();
         QueryFlight flightTask = new QueryFlight(this,getResources().openRawResource(R.raw.flightstats));
         flightTask.execute();
+        onCameraChange(mMap.getCameraPosition());
     }
 
     public void setWeatherData(ArrayList<WeatherData> result){
@@ -372,4 +396,142 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             });
         }
     }
+
+    public void onCameraChange (CameraPosition position)
+    {
+        Projection proj = mMap.getProjection();
+        VisibleRegion vis = proj.getVisibleRegion();
+        LatLngBounds bounds = vis.latLngBounds;
+
+        try {
+            inView.removeLayerFromMap();
+        }
+        catch (Exception e)
+        {
+
+        }
+        GeoJsonPolygon poly;
+        GeoJsonMultiPolygon multipoly;
+        List<? extends List<LatLng>> coords;
+        List<GeoJsonPolygon> listpoly;
+        Iterator<LatLng> it;
+        LatLng pt;
+        GeoJsonGeometry geo;
+        int flag = 0;
+        inView = new GeoJsonLayer(mMap, new JSONObject());
+
+
+        for (GeoJsonFeature feature : layer.getFeatures())
+        {
+            if (feature.hasGeometry())
+            {
+                poly = (GeoJsonPolygon) feature.getGeometry();
+                coords = poly.getCoordinates();
+                it = (coords.iterator()).next().iterator();
+                while (it.hasNext() == true)
+                {
+                    pt = it.next();
+                    if (pt != null && bounds.contains(pt))
+                    {
+                        feature.getPolygonStyle().setFillColor(Color.YELLOW);
+                        inView.addFeature(feature);
+                        break;
+                    }
+                }
+            }
+        }
+
+        for (GeoJsonFeature feature : layer3.getFeatures())
+        {
+            if (feature.hasGeometry())
+            {
+                geo = feature.getGeometry();
+                if (geo.getType().equals("MultiPolygon")) {
+                    multipoly = (GeoJsonMultiPolygon) geo;
+                    listpoly = multipoly.getPolygons();
+                    for (GeoJsonPolygon p : listpoly) {
+                        coords = p.getCoordinates();
+                        it = (coords.iterator()).next().iterator();
+                        while (it.hasNext() == true) {
+                            pt = it.next();
+                            if (bounds.contains(pt)) {
+                                feature.getPolygonStyle().setFillColor(Color.RED);
+                                inView.addFeature(feature);
+                                flag = 1;
+                                break;
+                            }
+                        }
+                        if (flag == 1) {
+                            flag = 0;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    poly = (GeoJsonPolygon) geo;
+                    coords = poly.getCoordinates();
+                    it = (coords.iterator()).next().iterator();
+                    while (it.hasNext() == true)
+                    {
+                        pt = it.next();
+                        if (bounds.contains(pt))
+                        {
+                            feature.getPolygonStyle().setFillColor(Color.RED);
+                            inView.addFeature(feature);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        for (GeoJsonFeature feature : layer2.getFeatures())
+        {
+            if (feature.hasGeometry())
+            {
+                geo = feature.getGeometry();
+                if (geo.getType().equals("MultiPolygon")) {
+                    multipoly = (GeoJsonMultiPolygon) geo;
+                    listpoly = multipoly.getPolygons();
+                    for (GeoJsonPolygon p : listpoly) {
+                        coords = p.getCoordinates();
+                        it = (coords.iterator()).next().iterator();
+                        while (it.hasNext() == true) {
+                            pt = it.next();
+                            if (bounds.contains(pt)) {
+                                feature.getPolygonStyle().setFillColor(Color.BLUE);
+                                inView.addFeature(feature);
+                                flag = 1;
+                                break;
+                            }
+                        }
+                        if (flag == 1) {
+                            flag = 0;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    poly = (GeoJsonPolygon) geo;
+                    coords = poly.getCoordinates();
+                    it = (coords.iterator()).next().iterator();
+                    while (it.hasNext() == true)
+                    {
+                        pt = it.next();
+                        if (bounds.contains(pt))
+                        {
+                            feature.getPolygonStyle().setFillColor(Color.BLUE);
+                            inView.addFeature(feature);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        inView.addLayerToMap();
+    }
+
 }

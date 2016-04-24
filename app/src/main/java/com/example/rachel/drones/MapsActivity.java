@@ -165,7 +165,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         //mMap = map;
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
         try {
             layer = new GeoJsonLayer(mMap, R.raw.airport, getApplicationContext());
             layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
@@ -399,6 +399,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void onCameraChange (CameraPosition position)
     {
+        if (position.zoom < 9) {
+            inView.removeLayerFromMap();
+            return;
+        }
+
         Projection proj = mMap.getProjection();
         VisibleRegion vis = proj.getVisibleRegion();
         LatLngBounds bounds = vis.latLngBounds;
@@ -433,7 +438,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     pt = it.next();
                     if (pt != null && bounds.contains(pt))
                     {
-                        feature.getPolygonStyle().setFillColor(Color.YELLOW);
+                        feature.getPolygonStyle().setStrokeColor(Color.RED);
                         inView.addFeature(feature);
                         break;
                     }
@@ -455,7 +460,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         while (it.hasNext() == true) {
                             pt = it.next();
                             if (bounds.contains(pt)) {
-                                feature.getPolygonStyle().setFillColor(Color.RED);
+                                feature.getPolygonStyle().setStrokeColor(Color.YELLOW);
                                 inView.addFeature(feature);
                                 flag = 1;
                                 break;
@@ -477,7 +482,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         pt = it.next();
                         if (bounds.contains(pt))
                         {
-                            feature.getPolygonStyle().setFillColor(Color.RED);
+                            feature.getPolygonStyle().setStrokeColor(Color.YELLOW);
                             inView.addFeature(feature);
                             break;
                         }
@@ -500,7 +505,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         while (it.hasNext() == true) {
                             pt = it.next();
                             if (bounds.contains(pt)) {
-                                feature.getPolygonStyle().setFillColor(Color.BLUE);
+                                feature.getPolygonStyle().setStrokeColor(Color.MAGENTA);
                                 inView.addFeature(feature);
                                 flag = 1;
                                 break;
@@ -522,7 +527,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         pt = it.next();
                         if (bounds.contains(pt))
                         {
-                            feature.getPolygonStyle().setFillColor(Color.BLUE);
+                            feature.getPolygonStyle().setStrokeColor(Color.MAGENTA);
                             inView.addFeature(feature);
                             break;
                         }

@@ -1,41 +1,60 @@
 package com.example.rachel.drones;
 
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import dji.sdk.FlightController.DJIFlightController;
+import dji.sdk.FlightController.DJIFlightControllerDataType;
+import dji.sdk.FlightController.DJIFlightControllerDelegate;
+import dji.sdk.Products.DJIAircraft;
+import dji.sdk.base.DJIBaseProduct;
+
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback{
 
     private GoogleMap mMap;
     private boolean mPermissionDenied = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+
+    private TextView mInfoTextView;
+    private double droneLocationLat = 181, droneLocationLng = 181;
+    private DJIFlightController mFlightController;
+    private Marker droneMarker = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_main);
 //        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
+        mInfoTextView = (TextView)findViewById(R.id.info_textView);
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(DJIDemoApplication.FLAG_CONNECTION_CHANGE);
+        registerReceiver(mReceiver, filter);
+
         mapFragment.getMapAsync(this);
     }
     @Override
@@ -108,4 +127,82 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        initFlightController();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        unregisterReceiver(mReceiver);
+    }
+
+
+    protected BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            onProductConnectionChange();
+        }
+    };
+
+    private void onProductConnectionChange()
+    {
+        initFlightController();
+    }
+
+    private void initFlightController() {
+
+        DJIBaseProduct product = DJIDemoApplication.getProductInstance();
+        if (product != null && product.isConnected()) {
+            if (product instanceof DJIAircraft) {
+                mFlightController = ((DJIAircraft) product).getFlightController();
+            }
+        }
+
+        if (mFlightController != null) {
+            mFlightController.setUpdateSystemStateCallback(new DJIFlightControllerDelegate.FlightControllerUpdateSystemStateCallback() {
+
+                @Override
+                public void onResult(DJIFlightControllerDataType.DJIFlightControllerCurrentState state) {
+                    droneLocationLat = state.getAircraftLocation().getLatitude();
+                    droneLocationLng = state.getAircraftLocation().getLongitude();
+                    updateDroneLocation();
+                }
+            });
+        }
+    }
+
+    // Update the drone location based on states from MCU.
+    private void updateDroneLocation(){
+
+        LatLng pos = new LatLng(droneLocationLat, droneLocationLng);
+        //Create MarkerOptions object
+        final MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(pos);
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft));
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (droneMarker != null) {
+                    droneMarker.remove();
+                }
+                mInfoTextView.setText("lat: "+ String.valueOf(droneLocationLat)+", lng: "+String.valueOf(droneLocationLng));
+                if (checkGpsCoordination(droneLocationLat, droneLocationLng)) {
+                    droneMarker = mMap.addMarker(markerOptions);
+                }
+            }
+        });
+    }
+
+    public static boolean checkGpsCoordination(double latitude, double longitude) {
+        return (latitude > -90 && latitude < 90 && longitude > -180 && longitude < 180) && (latitude != 0f && longitude != 0f);
+    }
+
+    public void getLocation(View view){
+        updateDroneLocation();
+    }
 }

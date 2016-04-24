@@ -1,2 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/brucwu/NVPACK/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0_cd435bec466184607b0f68f754f376d382e69f34.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-analytics-8.4.0_fcced86bf381a40d7eb678815c1ff122a1a18d6c.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-maps-8.4.0_bde059b010e7ed4aefb91cf0ed1315b1aad2c24b.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0_a21533c9e1ba1110dcd70169b4126a69b0843e73.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0_d230f3d684a9187e6a87f06778da2811c3ff9747.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-wallet-8.4.0_3032f7b8af6430e47d053ea0ccefbbddb2b8fff3.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appindexing-8.4.0_6c3877fa8baa40109a1333dbaf6b2cdcb7442da0.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.android.support-mediarouter-v7-23.0.0_000344bf16c1d100d44d40c67616f4e5db20ea92.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-8.4.0_e5b21a5b3f2eb570d8eed107f69ede43b46b1450.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-wearable-8.4.0_3225cfe1ffb64060a063bf68faeb133288b293e7.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-ads-8.4.0_f74f0f1023ce0f94c4fb8ee18358003eba3ca78d.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-vision-8.4.0_dbdd11b1fb28571485a9b7cd85365419bf3cff60.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-plus-8.4.0_cc8d68a0d51776d9f62af6dbfd55ceb26e22d3ca.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appinvite-8.4.0_e9ff62bccd8a8b0dec20b705bc0a88fdb201ad04.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-identity-8.4.0_424ca2206191d9a0eb27661b4f2ae1196ec3d9fd.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.0_138f52354ef08223798782e1a9285efb90d3a1b2.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-measurement-8.4.0_7c66498a90c8ef25262e34d019630807eb8cd572.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-8.4.0_58569322e139244494966c239557d536d35e65d4.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-8.4.0_d022a2aaa6383c6cb14d6bd2d25aa23cf7235246.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-panorama-8.4.0_d8c7e7d698f8be7c2d49e76d39142873323b4391.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-location-8.4.0_9aaa7887a30b18407217407babdf5eddd369d5fd.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-nearby-8.4.0_1c55e385975f01831f4114bac3a8bcaf09353211.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-fitness-8.4.0_20de503106c4eb8001e1b308751868f1aaa8a223.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-games-8.4.0_a26b74a5d25bcc22345a2cdaa43418460f6a9fb6.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.0_24dd68a24a84a4fa7d6ed938b11f910a8e41d51e.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-cast-8.4.0_d2f8e95d7f2499691b556b3853bd428120ea1c02.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-8.4.0_1e9688198cfebf569595e278db04bfe26c484d28.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-safetynet-8.4.0_9bb31461690714b647db4fc0486d097eb9c75ba4.jar" />
+    </item>
+    <item
+        jar="/Users/brucwu/NoDroneZone/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="/Users/brucwu/NoDroneZone/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-drive-8.4.0_f2b98c54e14ecf119fcc590a8dae12417857b43a.jar" />
+    </item>
+
+</items>

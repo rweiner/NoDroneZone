@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/MarkLai/Documents/Hackathan/NASASpaceApp/NoDroneZone/dJISDKLIB/build/intermediates/res/merged/androidTest/debug/values/values.xml",
+        "outputFile": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/res/merged/androidTest/debug/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 105
                 },
                 "from": {
-                    "file": "/Users/MarkLai/Documents/Hackathan/NASASpaceApp/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 525
                 },
                 "from": {
-                    "file": "/Users/MarkLai/Documents/Hackathan/NASASpaceApp/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -50,7 +50,7 @@
                     "endOffset": 816
                 },
                 "from": {
-                    "file": "/Users/MarkLai/Documents/Hackathan/NASASpaceApp/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -71,7 +71,7 @@
                     "endOffset": 976
                 },
                 "from": {
-                    "file": "/Users/MarkLai/Documents/Hackathan/NASASpaceApp/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -92,7 +92,7 @@
                     "endOffset": 1105
                 },
                 "from": {
-                    "file": "/Users/MarkLai/Documents/Hackathan/NASASpaceApp/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -113,7 +113,7 @@
                     "endOffset": 1550
                 },
                 "from": {
-                    "file": "/Users/MarkLai/Documents/Hackathan/NASASpaceApp/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
+                    "file": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,

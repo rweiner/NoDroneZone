@@ -28,9 +28,11 @@ import dji.sdk.FlightController.DJIFlightController;
 import dji.sdk.FlightController.DJIFlightControllerDataType;
 import dji.sdk.FlightController.DJIFlightControllerDelegate;
 import dji.sdk.Products.DJIAircraft;
+import dji.sdk.base.DJIBaseComponent;
 import dji.sdk.base.DJIBaseProduct;
+import dji.sdk.base.DJIError;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback{
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback, DJIBaseComponent.DJICompletionCallback{
 
     private GoogleMap mMap;
     private boolean mPermissionDenied = false;
@@ -219,5 +221,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Toast.makeText(MapsActivity.this, string, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    /**
+     * DJIMissionManager Delegate Methods
+     */
+    @Override
+    public void onResult(DJIError error) {
+        setResultToToast("Execution finished: " + (error == null ? "Success!" : error.getDescription()));
     }
 }

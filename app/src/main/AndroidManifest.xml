@@ -40,8 +40,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <uses-library android:name="com.android.future.usb.accessory" />
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -50,12 +48,16 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
+        <!-- DJI SDK -->
+
+        <uses-library android:name="com.android.future.usb.accessory" />
+
+        <meta-data
+            android:name="com.dji.sdk.API_KEY"
+            android:value="6fadbee644d5b78930a244e2" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDzYj5wbwDkEblVRJaRLLQEtXWqiJMjDlI" />
-        <meta-data
-            android:name="com.dji.sdk.API_KEY"
-            android:value="9150c6de4781572ab0f16ce1" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -72,6 +74,10 @@
                 android:resource="@xml/accessory_filter" />
         </activity>
 
+        <service android:name="dji.sdk.SDKManager.DJIGlobalService"></service>
+
+        <!-- DJI SDK -->
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
@@ -81,9 +87,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service android:name="dji.sdk.SDKManager.DJIGlobalService" >
-        </service>
 
     </application>
 

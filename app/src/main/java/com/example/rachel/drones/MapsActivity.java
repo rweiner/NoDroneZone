@@ -27,12 +27,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import dji.sdk.FlightController.DJIFlightController;
 import dji.sdk.FlightController.DJIFlightControllerDataType;
 import dji.sdk.FlightController.DJIFlightControllerDelegate;
+import dji.sdk.MissionManager.DJIMission;
+import dji.sdk.MissionManager.DJIMissionManager;
 import dji.sdk.Products.DJIAircraft;
 import dji.sdk.base.DJIBaseComponent;
 import dji.sdk.base.DJIBaseProduct;
 import dji.sdk.base.DJIError;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, ActivityCompat.OnRequestPermissionsResultCallback, DJIBaseComponent.DJICompletionCallback{
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, DJIMissionManager.MissionProgressStatusCallback, ActivityCompat.OnRequestPermissionsResultCallback, DJIBaseComponent.DJICompletionCallback{
 
     private GoogleMap mMap;
     private boolean mPermissionDenied = false;
@@ -229,5 +231,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onResult(DJIError error) {
         setResultToToast("Execution finished: " + (error == null ? "Success!" : error.getDescription()));
+    }
+
+    /**
+     * DJIMissionManager Delegate Methods
+     */
+    @Override
+    public void missionProgressStatus(DJIMission.DJIMissionProgressStatus progressStatus) {
+
     }
 }

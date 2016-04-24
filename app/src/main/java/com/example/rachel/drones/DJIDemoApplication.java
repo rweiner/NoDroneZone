@@ -33,7 +33,6 @@ public class DJIDemoApplication extends Application {
         if (null == mProduct) {
             Log.d("mProduct","Before");
             mProduct = DJISDKManager.getInstance().getDJIProduct();
-
         }
         return mProduct;
     }

@@ -16,10 +16,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.8/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/DJIDemoApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/DJIDemoApplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/MapsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/MapsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dJISDKLIB/dJISDKLIB.iml" afterPath="$PROJECT_DIR$/dJISDKLIB/dJISDKLIB.iml" />
     </list>
     <ignored path="NoDroneZone.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -157,11 +156,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MapsActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MapsActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/MapsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42035398">
-              <caret line="34" column="25" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="241" column="5" selection-start-line="241" selection-start-column="5" selection-end-line="241" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,7 +172,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/DJIDemoApplication.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="66" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="66" />
+              <caret line="34" column="67" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -194,15 +193,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-48.75">
-              <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.29816514">
+              <caret line="57" column="51" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="51" />
               <folding>
-                <element signature="e#2034#2052#0" expanded="true" />
-                <element signature="e#3119#3158#0" expanded="true" />
-                <element signature="e#3842#3871#0" expanded="true" />
+                <element signature="e#2078#2096#0" expanded="true" />
+                <element signature="e#3162#3201#0" expanded="true" />
+                <element signature="e#3969#3998#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2833,8 +2832,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/DJIDemoApplication.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/MapsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -3483,9 +3482,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2034#2052#0" expanded="true" />
-            <element signature="e#3119#3158#0" expanded="true" />
-            <element signature="e#3842#3871#0" expanded="true" />
+            <element signature="e#2078#2096#0" expanded="true" />
+            <element signature="e#3162#3201#0" expanded="true" />
+            <element signature="e#3969#3998#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3526,9 +3525,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
           <folding>
-            <element signature="e#2034#2052#0" expanded="true" />
-            <element signature="e#3119#3158#0" expanded="true" />
-            <element signature="e#3842#3871#0" expanded="true" />
+            <element signature="e#2078#2096#0" expanded="true" />
+            <element signature="e#3162#3201#0" expanded="true" />
+            <element signature="e#3969#3998#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3588,9 +3587,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
           <folding>
-            <element signature="e#2034#2052#0" expanded="true" />
-            <element signature="e#3119#3158#0" expanded="true" />
-            <element signature="e#3842#3871#0" expanded="true" />
+            <element signature="e#2078#2096#0" expanded="true" />
+            <element signature="e#3162#3201#0" expanded="true" />
+            <element signature="e#3969#3998#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3640,9 +3639,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
           <folding>
-            <element signature="e#2034#2052#0" expanded="true" />
-            <element signature="e#3119#3158#0" expanded="true" />
-            <element signature="e#3842#3871#0" expanded="true" />
+            <element signature="e#2078#2096#0" expanded="true" />
+            <element signature="e#3162#3201#0" expanded="true" />
+            <element signature="e#3969#3998#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3692,9 +3691,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
           <folding>
-            <element signature="e#2034#2052#0" expanded="true" />
-            <element signature="e#3119#3158#0" expanded="true" />
-            <element signature="e#3842#3871#0" expanded="true" />
+            <element signature="e#2078#2096#0" expanded="true" />
+            <element signature="e#3162#3201#0" expanded="true" />
+            <element signature="e#3969#3998#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3733,9 +3732,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2034#2052#0" expanded="true" />
-            <element signature="e#3119#3158#0" expanded="true" />
-            <element signature="e#3842#3871#0" expanded="true" />
+            <element signature="e#2078#2096#0" expanded="true" />
+            <element signature="e#3162#3201#0" expanded="true" />
+            <element signature="e#3969#3998#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3816,6 +3815,26 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/DJIDemoApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="67" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/MapsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="241" column="5" selection-start-line="241" selection-start-column="5" selection-end-line="241" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.3018868">
@@ -3827,34 +3846,14 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/DJIDemoApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="66" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-48.75">
-          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.29816514">
+          <caret line="57" column="51" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="51" />
           <folding>
-            <element signature="e#2034#2052#0" expanded="true" />
-            <element signature="e#3119#3158#0" expanded="true" />
-            <element signature="e#3842#3871#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachel/drones/MapsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42035398">
-          <caret line="34" column="25" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2078#2096#0" expanded="true" />
+            <element signature="e#3162#3201#0" expanded="true" />
+            <element signature="e#3969#3998#0" expanded="true" />
           </folding>
         </state>
       </provider>

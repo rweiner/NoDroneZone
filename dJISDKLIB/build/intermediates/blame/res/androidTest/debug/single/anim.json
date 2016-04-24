@@ -16,12 +16,12 @@
         "source": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/anim/core_zoom_enter.xml"
     },
     {
-        "merged": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/res/merged/androidTest/debug/anim/core_hyperspace_in.xml",
-        "source": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/anim/core_hyperspace_in.xml"
-    },
-    {
         "merged": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/res/merged/androidTest/debug/anim/core_push_right_in.xml",
         "source": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/anim/core_push_right_in.xml"
+    },
+    {
+        "merged": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/res/merged/androidTest/debug/anim/core_hyperspace_in.xml",
+        "source": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/bundles/debug/res/anim/core_hyperspace_in.xml"
     },
     {
         "merged": "/Users/brucwu/NoDroneZone/dJISDKLIB/build/intermediates/res/merged/androidTest/debug/anim/core_zoom_enter_back.xml",

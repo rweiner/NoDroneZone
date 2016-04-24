@@ -1,0 +1,49 @@
+private GeoJsonLayer inView;
+private GeoJsonLayer layer2;
+
+OnCameraChangeListener;
+
+mMap.setOnCameraChangeListener(this);
+
+ public void onCameraChange (CameraPosition position)
+    {
+        Projection proj = mMap.getProjection();
+        VisibleRegion vis = proj.getVisibleRegion();
+        LatLngBounds bounds = vis.latLngBounds;
+
+        try {
+            inView.removeLayerFromMap();
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        GeoJsonPolygon poly;
+        List<? extends List<LatLng>> coords;
+        Iterator<LatLng> it;
+        LatLng pt;
+        inView = new GeoJsonLayer(mMap, new JSONObject());
+
+        for (GeoJsonFeature feature : layer2.getFeatures())
+        {
+            if (feature.hasGeometry())
+            {
+                poly = (GeoJsonPolygon) feature.getGeometry();
+                coords = poly.getCoordinates();
+                it = (coords.iterator()).next().iterator();
+                while (it.hasNext() == true)
+                {
+                    pt = it.next();
+                    if (bounds.contains(pt))
+                    {
+                        inView.addFeature(feature);
+                        break;
+                    }
+                }
+            }
+        }
+
+        inView.addLayerToMap();
+
+    }

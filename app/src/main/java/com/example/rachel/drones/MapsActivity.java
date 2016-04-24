@@ -25,8 +25,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.geojson.GeoJsonFeature;
+import com.google.maps.android.geojson.GeoJsonLayer;
+import com.google.maps.android.geojson.GeoJsonPointStyle;
 
 import java.util.ArrayList;
+import java.io.IOException;
+import org.json.JSONException;
 
 import dji.sdk.FlightController.DJIFlightController;
 import dji.sdk.FlightController.DJIFlightControllerDataType;
@@ -60,6 +65,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 //        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -72,6 +78,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mapFragment.getMapAsync(this);
     }
+
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
@@ -79,6 +86,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // (the camera animates to the user's current position).
         return false;
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -95,6 +103,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mPermissionDenied = true;
         }
     }
+
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
@@ -104,6 +113,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mPermissionDenied = false;
         }
     }
+
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
@@ -120,6 +130,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.setMyLocationEnabled(true);
         }
     }
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -134,6 +145,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
         //mMap = map;
 
+
+        try {
+            GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.airport, getApplicationContext());
+            layer.addLayerToMap();
+            GeoJsonLayer layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
+            layer2.addLayerToMap();
+           GeoJsonLayer layer3 = new GeoJsonLayer(mMap, R.raw.ca_national_park, getApplicationContext());
+            layer3.addLayerToMap();
+        } catch (IOException e) {
+
+            //e.printStackTrace();
+        } catch (JSONException e) {
+            //e.printStackTrace();
+            System.out.print("ggg");
+        }
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationChangeListener(myLocationChangeListener);
         enableMyLocation();

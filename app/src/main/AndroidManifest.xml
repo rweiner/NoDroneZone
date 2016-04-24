@@ -57,10 +57,10 @@
 
         <meta-data
             android:name="com.dji.sdk.API_KEY"
-            android:value="9150c6de4781572ab0f16ce1" />
+            android:value="364103dab088822f4e63c3dc" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDzYj5wbwDkEblVRJaRLLQEtXWqiJMjDlI" />
+            android:value="AIzaSyBez0knGXmEoHeje5iqUVoZvj5BPIH7Uwg" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -91,11 +91,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".DummyFlight"
-            android:enabled="true"
-            android:exported="true"></service>
     </application>
 
 </manifest>

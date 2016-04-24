@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 import dji.sdk.FlightController.DJIFlightController;
 import dji.sdk.FlightController.DJIFlightControllerDataType;
@@ -44,6 +48,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private double droneLocationLat = 181, droneLocationLng = 181;
     private DJIFlightController mFlightController;
     private Marker droneMarker = null;
+    private Marker weatherMarker = null;
+    private double weatherLat = 0, weatherLon = 0;
+    private double deviceLat = 0,deviceLon=0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,12 +133,31 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //mMap = map;
 
         mMap.setOnMyLocationButtonClickListener(this);
+        mMap.setOnMyLocationChangeListener(myLocationChangeListener);
         enableMyLocation();
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//        LocationManager locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+//        Criteria criteria = new Criteria();
+//        String bestProvider = locationManager.getBestProvider(criteria,true);
+//        Location location = locationManager.getLastKnownLocation(bestProvider);
+//        Log.d("Location", "LOCATION!!!! "+String.valueOf(location.getLatitude())+", "+location.getLongitude());
     }
+
+    private GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
+        @Override
+        public void onMyLocationChange(Location location) {
+            Log.d("Location", "LOCATION!!!! "+String.valueOf(location.getLatitude())+", "+location.getLongitude());
+            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+            deviceLat = location.getLatitude();
+            deviceLon = location.getLongitude();
+//            if(mMap != null){
+//                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+//            }
+        }
+    };
 
     @Override
     protected void onResume(){
@@ -240,4 +268,49 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void missionProgressStatus(DJIMission.DJIMissionProgressStatus progressStatus) {
 
     }
+
+    public void getData(View view){
+        getweatherData();
+    }
+
+    private void getweatherData() {
+
+        QueryWeatherData weatherTask = new QueryWeatherData(this,deviceLat,deviceLon);
+        weatherTask.execute();
+    }
+
+    public void setWeatherData(ArrayList<WeatherData> result){
+        for(int i = 0; i < result.size();i++){
+            weatherLat = result.get(i).lat;
+            weatherLon = result.get(i).lon;
+            LatLng pos = new LatLng(weatherLat, weatherLon);
+//            Log.d("SET","setWeatherData!!!!!!" +String.valueOf(result.get(i).lat));
+            //Create MarkerOptions object
+            final MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(pos);
+            if(result.get(i).windSpeed >2){
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.wind_red));
+            }else{
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.wind));
+            }
+
+            markerOptions.title("Wind Speed: "+String.valueOf(result.get(i).windSpeed));
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+//                    if ( weatherMarker!= null) {
+//                        weatherMarker.remove();
+//                    }
+                    Log.d("SET","setWeatherData!!!!!!" +String.valueOf(weatherLat));
+
+                    if (checkGpsCoordination(weatherLat, weatherLon)) {
+                        weatherMarker = mMap.addMarker(markerOptions);
+                    }
+                }
+            });
+        }
+//        Log.d("SET","setWeatherData!!!!!!" +String.valueOf(result.get(0).windSpeed));
+    }
+
 }

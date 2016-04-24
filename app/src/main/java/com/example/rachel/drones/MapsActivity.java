@@ -169,7 +169,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         try {
 
-            GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.airport, getApplicationContext());
+            GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.socal_airport, getApplicationContext());
             layer.addLayerToMap();
             GeoJsonLayer layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
             layer2.addLayerToMap();

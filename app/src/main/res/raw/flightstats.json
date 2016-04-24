@@ -1,0 +1,449 @@
+{	"request" : {
+		"topLatitude" : {
+			"requested" : "32.0",
+			"interpreted" : 32.0
+		},
+		"leftLongitude" : {
+			"requested" : "-119.0",
+			"interpreted" : -119.0
+		},
+		"bottomLatitude" : {
+			"requested" : "35.0",
+			"interpreted" : 35.0
+		},
+		"rightLongitude" : {
+			"requested" : "-116.0",
+			"interpreted" : -116.0
+		},
+		"maxFlights" : {
+			"requested" : "5",
+			"interpreted" : 5
+		},
+		"extendedOptions" : {
+			"requested" : "includeNewFields",
+			"interpreted" : "includeNewFields"
+		},
+		"url" : "https://api.flightstats.com/flex/flightstatus/rest/v2/json/flightsNear/32/-119/35/-116"
+	},
+	"appendix" : {},
+	"flightPositions" : [{
+			"flightId" : 521505808,
+			"callsign" : "SWA741",
+			"source" : "derived",
+			"positions" : [{
+					"lon" : -117.8833,
+					"lat" : 33.65,
+					"speedMph" : 169,
+					"altitudeFt" : 1700,
+					"source" : "derived",
+					"date" : "2015-04-01T21:27:31.000Z",
+					"lastObserved" : "2015-04-01T21:27:31.000Z"
+				}
+			]
+		}, {
+			"flightId" : 521500660,
+			"callsign" : "SWA589",
+			"heading" : 132.4918998330472,
+			"source" : "derived",
+			"positions" : [{
+					"lon" : -117.2945,
+					"lat" : 32.7844,
+					"speedMph" : 231,
+					"source" : "derived",
+					"date" : "2015-04-01T21:18:47.000Z",
+					"course" : -58,
+					"lastObserved" : "2015-04-01T21:18:29.000Z"
+				}, {
+					"lon" : -117.6654,
+					"lat" : 33.0706,
+					"speedMph" : 244,
+					"altitudeFt" : 6424,
+					"source" : "derived",
+					"date" : "2015-04-01T21:19:47.000Z",
+					"course" : 310,
+					"vrateMps" : 3,
+					"lastObserved" : "2015-04-01T21:18:29.000Z"
+				}, {
+					"lon" : -117.4256,
+					"lat" : 32.8792,
+					"speedMph" : 312,
+					"altitudeFt" : 10100,
+					"source" : "derived",
+					"date" : "2015-04-01T21:20:33.000Z",
+					"lastObserved" : "2015-04-01T21:20:33.000Z"
+				}, {
+					"lon" : -117.7225,
+					"lat" : 33.1058,
+					"speedMph" : 251,
+					"altitudeFt" : 7024,
+					"source" : "derived",
+					"date" : "2015-04-01T21:20:47.000Z",
+					"course" : 320,
+					"vrateMps" : 3,
+					"lastObserved" : "2015-04-01T21:19:31.000Z"
+				}, {
+					"lon" : -117.5662,
+					"lat" : 32.9876,
+					"speedMph" : 296,
+					"altitudeFt" : 13729,
+					"source" : "derived",
+					"date" : "2015-04-01T21:22:47.000Z",
+					"course" : -47,
+					"vrateMps" : 8,
+					"lastObserved" : "2015-04-01T21:21:36.000Z"
+				}, {
+					"lon" : -117.7645,
+					"lat" : 33.1303,
+					"speedMph" : 604,
+					"altitudeFt" : 19397,
+					"source" : "derived",
+					"date" : "2015-04-01T21:23:47.000Z",
+					"course" : -49,
+					"vrateMps" : 5,
+					"lastObserved" : "2015-04-01T21:22:38.000Z"
+				}, {
+					"lon" : -117.8277,
+					"lat" : 33.1696,
+					"speedMph" : 564,
+					"altitudeFt" : 22261,
+					"source" : "derived",
+					"date" : "2015-04-01T21:24:47.000Z",
+					"course" : -51,
+					"vrateMps" : 7,
+					"lastObserved" : "2015-04-01T21:23:40.000Z"
+				}, {
+					"lon" : -117.9087,
+					"lat" : 33.2328,
+					"speedMph" : 506,
+					"altitudeFt" : 24350,
+					"source" : "derived",
+					"date" : "2015-04-01T21:25:47.000Z",
+					"course" : -49,
+					"vrateMps" : 10,
+					"lastObserved" : "2015-04-01T21:24:42.000Z"
+				}, {
+					"lon" : -118.0014,
+					"lat" : 33.2635,
+					"speedMph" : 409,
+					"altitudeFt" : 25293,
+					"source" : "derived",
+					"date" : "2015-04-01T21:26:47.000Z",
+					"course" : -58,
+					"vrateMps" : 16,
+					"lastObserved" : "2015-04-01T21:25:44.000Z"
+				}, {
+					"lon" : -118.1147,
+					"lat" : 33.3346,
+					"speedMph" : 457,
+					"altitudeFt" : 26495,
+					"source" : "derived",
+					"date" : "2015-04-01T21:27:47.000Z",
+					"course" : -57,
+					"vrateMps" : 16,
+					"lastObserved" : "2015-04-01T21:26:47.000Z"
+				}
+			]
+		}, {
+			"flightId" : 521500655,
+			"callsign" : "ASA487",
+			"heading" : 353.14907007526915,
+			"source" : "derived",
+			"positions" : [{
+					"lon" : -117.2127,
+					"lat" : 32.7529,
+					"speedMph" : 173,
+					"altitudeFt" : 472,
+					"source" : "derived",
+					"date" : "2015-04-01T21:18:46.000Z",
+					"course" : 308,
+					"vrateMps" : 3
+				}, {
+					"lon" : -117.2111,
+					"lat" : 32.7417,
+					"speedMph" : 158,
+					"source" : "derived",
+					"date" : "2015-04-01T21:19:06.000Z",
+					"lastObserved" : "2015-04-01T21:19:06.000Z"
+				}, {
+					"lon" : -117.2794,
+					"lat" : 32.7806,
+					"speedMph" : 249,
+					"altitudeFt" : 3300,
+					"source" : "derived",
+					"date" : "2015-04-01T21:20:08.000Z",
+					"lastObserved" : "2015-04-01T21:20:08.000Z"
+				}, {
+					"lon" : -117.3859,
+					"lat" : 32.8522,
+					"speedMph" : 290,
+					"altitudeFt" : 7574,
+					"source" : "derived",
+					"date" : "2015-04-01T21:21:46.000Z",
+					"course" : -51,
+					"vrateMps" : 13,
+					"lastObserved" : "2015-04-01T21:21:10.000Z"
+				}, {
+					"lon" : -117.4526,
+					"lat" : 32.9043,
+					"speedMph" : 317,
+					"altitudeFt" : 10780,
+					"source" : "derived",
+					"date" : "2015-04-01T21:22:46.000Z",
+					"course" : -47,
+					"vrateMps" : 13,
+					"lastObserved" : "2015-04-01T21:22:12.000Z"
+				}, {
+					"lon" : -117.5325,
+					"lat" : 32.9638,
+					"speedMph" : 369,
+					"altitudeFt" : 13275,
+					"source" : "derived",
+					"date" : "2015-04-01T21:23:46.000Z",
+					"course" : -47,
+					"vrateMps" : 14,
+					"lastObserved" : "2015-04-01T21:23:15.000Z"
+				}, {
+					"lon" : -117.6137,
+					"lat" : 33.0234,
+					"speedMph" : 391,
+					"altitudeFt" : 16573,
+					"source" : "derived",
+					"date" : "2015-04-01T21:24:46.000Z",
+					"course" : -48,
+					"vrateMps" : 13,
+					"lastObserved" : "2015-04-01T21:24:17.000Z"
+				}, {
+					"lon" : -117.6975,
+					"lat" : 33.0832,
+					"speedMph" : 404,
+					"altitudeFt" : 19879,
+					"source" : "derived",
+					"date" : "2015-04-01T21:25:46.000Z",
+					"course" : -48,
+					"vrateMps" : 13,
+					"lastObserved" : "2015-04-01T21:25:19.000Z"
+				}, {
+					"lon" : -117.7836,
+					"lat" : 33.1441,
+					"speedMph" : 411,
+					"altitudeFt" : 22824,
+					"source" : "derived",
+					"date" : "2015-04-01T21:26:46.000Z",
+					"course" : -49,
+					"vrateMps" : 14,
+					"lastObserved" : "2015-04-01T21:26:21.000Z"
+				}, {
+					"lon" : -117.8937,
+					"lat" : 33.2192,
+					"speedMph" : 470,
+					"altitudeFt" : 24897,
+					"source" : "derived",
+					"date" : "2015-04-01T21:27:46.000Z",
+					"course" : -50,
+					"vrateMps" : 16,
+					"lastObserved" : "2015-04-01T21:27:23.000Z"
+				}
+			]
+		}, {
+			"flightId" : 521503000,
+			"callsign" : "UAL809",
+			"heading" : 300.99954777403974,
+			"source" : "derived",
+			"positions" : [{
+					"lon" : -118.8167,
+					"lat" : 33.5833,
+					"speedMph" : 366,
+					"altitudeFt" : 9700,
+					"source" : "derived",
+					"date" : "2015-04-01T21:18:30.000Z",
+					"lastObserved" : "2015-04-01T21:18:30.000Z"
+				}, {
+					"lon" : -118.6779,
+					"lat" : 33.5139,
+					"speedMph" : 403,
+					"altitudeFt" : 8728,
+					"source" : "derived",
+					"date" : "2015-04-01T21:19:53.000Z",
+					"course" : 121,
+					"vrateMps" : -4,
+					"lastObserved" : "2015-04-01T21:19:31.000Z"
+				}, {
+					"lon" : -118.5922,
+					"lat" : 33.5189,
+					"speedMph" : 294,
+					"altitudeFt" : 9133,
+					"source" : "derived",
+					"date" : "2015-04-01T21:20:53.000Z",
+					"course" : 80,
+					"vrateMps" : -5,
+					"lastObserved" : "2015-04-01T21:20:36.000Z"
+				}, {
+					"lon" : -118.49,
+					"lat" : 33.5024,
+					"speedMph" : 333,
+					"altitudeFt" : 9144,
+					"source" : "derived",
+					"date" : "2015-04-01T21:21:53.000Z",
+					"course" : 87,
+					"vrateMps" : -4,
+					"lastObserved" : "2015-04-01T21:21:36.000Z"
+				}, {
+					"lon" : -118.4167,
+					"lat" : 33.4667,
+					"speedMph" : 344,
+					"altitudeFt" : 8400,
+					"source" : "derived",
+					"date" : "2015-04-01T21:22:36.000Z",
+					"lastObserved" : "2015-04-01T21:22:36.000Z"
+				}, {
+					"lon" : -118.3167,
+					"lat" : 33.45,
+					"speedMph" : 344,
+					"altitudeFt" : 6900,
+					"source" : "derived",
+					"date" : "2015-04-01T21:23:36.000Z",
+					"lastObserved" : "2015-04-01T21:23:36.000Z"
+				}, {
+					"lon" : -118.3228,
+					"lat" : 33.45,
+					"speedMph" : 350,
+					"altitudeFt" : 6900,
+					"source" : "derived",
+					"date" : "2015-04-01T21:23:40.000Z",
+					"lastObserved" : "2015-04-01T21:23:40.000Z"
+				}, {
+					"lon" : -118.2319,
+					"lat" : 33.4303,
+					"speedMph" : 335,
+					"altitudeFt" : 5500,
+					"source" : "derived",
+					"date" : "2015-04-01T21:24:42.000Z",
+					"lastObserved" : "2015-04-01T21:24:42.000Z"
+				}, {
+					"lon" : -118.15,
+					"lat" : 33.4167,
+					"speedMph" : 320,
+					"altitudeFt" : 5000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:25:36.000Z",
+					"lastObserved" : "2015-04-01T21:25:44.000Z"
+				}, {
+					"lon" : -118.0875,
+					"lat" : 33.4633,
+					"speedMph" : 315,
+					"altitudeFt" : 5000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:26:47.000Z",
+					"lastObserved" : "2015-04-01T21:26:47.000Z"
+				}
+			]
+		}, {
+			"flightId" : 521502912,
+			"callsign" : "SKW5207",
+			"heading" : 305.2802134420227,
+			"source" : "derived",
+			"positions" : [{
+					"lon" : -119.3245,
+					"lat" : 34.4657,
+					"speedMph" : 604,
+					"altitudeFt" : 35000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:19:13.000Z",
+					"course" : 126,
+					"vrateMps" : 0,
+					"lastObserved" : "2015-04-01T21:18:54.000Z"
+				}, {
+					"lon" : -119.1685,
+					"lat" : 34.3748,
+					"speedMph" : 604,
+					"altitudeFt" : 35000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:20:13.000Z",
+					"course" : 125,
+					"vrateMps" : 0,
+					"lastObserved" : "2015-04-01T21:19:56.000Z"
+				}, {
+					"lon" : -119.005,
+					"lat" : 34.2775,
+					"speedMph" : 604,
+					"altitudeFt" : 35000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:21:13.000Z",
+					"course" : 125,
+					"vrateMps" : 0,
+					"lastObserved" : "2015-04-01T21:19:56.000Z"
+				}, {
+					"lon" : -118.8926,
+					"lat" : 34.2094,
+					"speedMph" : 584,
+					"altitudeFt" : 35000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:22:13.000Z",
+					"course" : 125,
+					"vrateMps" : 0,
+					"lastObserved" : "2015-04-01T21:22:00.000Z"
+				}, {
+					"lon" : -118.7694,
+					"lat" : 34.1352,
+					"speedMph" : 522,
+					"altitudeFt" : 35000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:23:13.000Z",
+					"course" : 126,
+					"vrateMps" : 0,
+					"lastObserved" : "2015-04-01T21:22:00.000Z"
+				}, {
+					"lon" : -118.612,
+					"lat" : 34.0381,
+					"speedMph" : 593,
+					"altitudeFt" : 35000,
+					"source" : "derived",
+					"date" : "2015-04-01T21:24:13.000Z",
+					"course" : 126,
+					"vrateMps" : 0,
+					"lastObserved" : "2015-04-01T21:23:03.000Z"
+				}, {
+					"lon" : -118.4665,
+					"lat" : 33.9526,
+					"speedMph" : 601,
+					"altitudeFt" : 34618,
+					"source" : "derived",
+					"date" : "2015-04-01T21:25:13.000Z",
+					"course" : 125,
+					"vrateMps" : 0,
+					"lastObserved" : "2015-04-01T21:24:05.000Z"
+				}, {
+					"lon" : -118.2628,
+					"lat" : 33.828,
+					"speedMph" : 604,
+					"altitudeFt" : 33503,
+					"source" : "derived",
+					"date" : "2015-04-01T21:26:13.000Z",
+					"course" : 126,
+					"vrateMps" : 1,
+					"lastObserved" : "2015-04-01T21:25:07.000Z"
+				}, {
+					"lon" : -118.1364,
+					"lat" : 33.7069,
+					"speedMph" : 640,
+					"altitudeFt" : 27133,
+					"source" : "derived",
+					"date" : "2015-04-01T21:27:13.000Z",
+					"course" : 136,
+					"vrateMps" : -12,
+					"lastObserved" : "2015-04-01T21:25:07.000Z"
+				}, {
+					"lon" : -118.0384,
+					"lat" : 33.6141,
+					"speedMph" : 604,
+					"altitudeFt" : 31424,
+					"source" : "derived",
+					"date" : "2015-04-01T21:28:13.000Z",
+					"course" : 138,
+					"vrateMps" : -1,
+					"lastObserved" : "2015-04-01T21:27:11.000Z"
+				}
+			]
+		}
+	]
+}

@@ -51,6 +51,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Marker weatherMarker = null;
     private double weatherLat = 0, weatherLon = 0;
     private double deviceLat = 0,deviceLon=0;
+    private Marker flightMarker = null;
+    private double flightLat=0, flightLon=0;
 
 
 
@@ -277,6 +279,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         QueryWeatherData weatherTask = new QueryWeatherData(this,deviceLat,deviceLon);
         weatherTask.execute();
+        QueryFlight flightTask = new QueryFlight(this,getResources().openRawResource(R.raw.flightstats));
+        flightTask.execute();
     }
 
     public void setWeatherData(ArrayList<WeatherData> result){
@@ -313,4 +317,33 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 //        Log.d("SET","setWeatherData!!!!!!" +String.valueOf(result.get(0).windSpeed));
     }
 
+    public void setFlightData(ArrayList<FlightData> result){
+//        Log.d("SET","setWeatherData!!!!!!" +String.valueOf(result.get(0).lat));
+        for(int i = 0; i < result.size();i++){
+            flightLat = result.get(i).lat;
+            flightLon = result.get(i).lon;
+            LatLng pos = new LatLng(flightLat, flightLon);
+//            Log.d("SET","setWeatherData!!!!!!" +String.valueOf(result.get(i).lat));
+            //Create MarkerOptions object
+            final MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(pos);
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft));
+
+//            markerOptions.title("Wind Speed: "+String.valueOf(result.get(i).windSpeed));
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+//                    if ( weatherMarker!= null) {
+//                        weatherMarker.remove();
+//                    }
+//                    Log.d("SET","setWeatherData!!!!!!" +String.valueOf(weatherLat));
+
+                    if (checkGpsCoordination(flightLat, flightLon)) {
+                        flightMarker = mMap.addMarker(markerOptions);
+                    }
+                }
+            });
+        }
+    }
 }

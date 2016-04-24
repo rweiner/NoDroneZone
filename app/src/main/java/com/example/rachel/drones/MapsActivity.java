@@ -19,13 +19,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.Projection;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -38,16 +38,15 @@ import com.google.maps.android.geojson.GeoJsonFeature;
 import com.google.maps.android.geojson.GeoJsonGeometry;
 import com.google.maps.android.geojson.GeoJsonLayer;
 import com.google.maps.android.geojson.GeoJsonMultiPolygon;
-import com.google.maps.android.geojson.GeoJsonPointStyle;
 import com.google.maps.android.geojson.GeoJsonPolygon;
-
-import java.util.ArrayList;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -60,8 +59,6 @@ import dji.sdk.Products.DJIAircraft;
 import dji.sdk.base.DJIBaseComponent;
 import dji.sdk.base.DJIBaseProduct;
 import dji.sdk.base.DJIError;
-
-import android.graphics.Color;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, OnMyLocationButtonClickListener, DJIMissionManager.MissionProgressStatusCallback,
         GoogleMap.OnCameraChangeListener, ActivityCompat.OnRequestPermissionsResultCallback, DJIBaseComponent.DJICompletionCallback{
@@ -327,7 +324,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 if (droneMarker != null) {
                     droneMarker.remove();
                 }
-                mInfoTextView.setText("lat: "+ String.valueOf(droneLocationLat)+", lng: "+String.valueOf(droneLocationLng));
+                mInfoTextView.setText("latitude: "+ String.valueOf(droneLocationLat)+"\nlongitude: "+String.valueOf(droneLocationLng));
                 if (checkGpsCoordination(droneLocationLat, droneLocationLng)) {
                     droneMarker = mMap.addMarker(markerOptions);
                 }

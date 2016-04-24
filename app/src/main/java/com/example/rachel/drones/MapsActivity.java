@@ -79,6 +79,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GeoJsonLayer layer3;
     private GeoJsonLayer inView;
 
+    private List<GeoJsonLayer> airports = new ArrayList<GeoJsonLayer>();
+    private List<GeoJsonLayer> military = new ArrayList<GeoJsonLayer>();
+    private List<GeoJsonLayer> parks = new ArrayList<GeoJsonLayer>();
+
     private CameraPosition lastCameraPosition;
 
 
@@ -171,6 +175,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
             layer3 = new GeoJsonLayer(mMap, R.raw.ca_national_park, getApplicationContext());
 
+            GeoJsonLayer tempLayer;
+            for (GeoJsonFeature feature : layer.getFeatures()) {
+                tempLayer = new GeoJsonLayer(mMap, new JSONObject());
+                tempLayer.addFeature(feature);
+                airports.add(tempLayer);
+            }
+            for (GeoJsonFeature feature : layer2.getFeatures()) {
+                tempLayer = new GeoJsonLayer(mMap, new JSONObject());
+                tempLayer.addFeature(feature);
+                military.add(tempLayer);
+            }
+            for (GeoJsonFeature feature : layer3.getFeatures()) {
+                tempLayer = new GeoJsonLayer(mMap, new JSONObject());
+                tempLayer.addFeature(feature);
+                parks.add(tempLayer);
+            }
+
             //layer.getDefaultPolygonStyle().setFillColor(Color.RED);
             //layer2.getDefaultPolygonStyle().setFillColor(Color.GREEN);
             //layer3.getDefaultPolygonStyle().setFillColor(Color.BLUE);
@@ -203,7 +224,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             deviceLat = location.getLatitude();
             deviceLon = location.getLongitude();
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+            //mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
 //            if(mMap != null){
 //                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
 //            }
@@ -400,14 +421,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onCameraChange (CameraPosition position)
     {
         lastCameraPosition = position;
+        int wipe = 0;
         if (position.zoom < 9) {
-            inView.removeLayerFromMap();
-            return;
-        }
-
-        if(lastCameraPosition.zoom == position.zoom) {
-      
-            return;
+          wipe = 1;
         }
 
 
@@ -415,6 +431,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         VisibleRegion vis = proj.getVisibleRegion();
         LatLngBounds bounds = vis.latLngBounds;
 
+        /*
         try {
             inView.removeLayerFromMap();
         }
@@ -422,6 +439,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         {
 
         }
+        */
+
         GeoJsonPolygon poly;
         GeoJsonMultiPolygon multipoly;
         List<? extends List<LatLng>> coords;
@@ -429,12 +448,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Iterator<LatLng> it;
         LatLng pt;
         GeoJsonGeometry geo;
+        GeoJsonFeature feature;
         int flag = 0;
+        int drawn = 0;
         inView = new GeoJsonLayer(mMap, new JSONObject());
 
 
-        for (GeoJsonFeature feature : layer.getFeatures())
+        for (GeoJsonLayer lay : airports)
         {
+            if (wipe == 1)
+            {
+                lay.removeLayerFromMap();
+                continue;
+            }
+            feature = lay.getFeatures().iterator().next();
             if (feature.hasGeometry())
             {
                 poly = (GeoJsonPolygon) feature.getGeometry();
@@ -446,15 +473,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if (pt != null && bounds.contains(pt))
                     {
                         feature.getPolygonStyle().setStrokeColor(Color.RED);
-                        inView.addFeature(feature);
+                        if (lay.isLayerOnMap() == false)
+                            lay.addLayerToMap();
+                        drawn = 1;
                         break;
                     }
                 }
+                if (drawn == 0 && lay.isLayerOnMap() == true)
+                    lay.removeLayerFromMap();
+                if (drawn == 1)
+                    drawn = 0;
             }
         }
 
-        for (GeoJsonFeature feature : layer3.getFeatures())
+        for (GeoJsonLayer lay : military)
         {
+            if (wipe == 1)
+            {
+                lay.removeLayerFromMap();
+                continue;
+            }
+            feature = lay.getFeatures().iterator().next();
             if (feature.hasGeometry())
             {
                 geo = feature.getGeometry();
@@ -468,7 +507,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             pt = it.next();
                             if (bounds.contains(pt)) {
                                 feature.getPolygonStyle().setStrokeColor(Color.YELLOW);
-                                inView.addFeature(feature);
+                                if (lay.isLayerOnMap() == false)
+                                    lay.addLayerToMap();
+                                drawn = 1;
                                 flag = 1;
                                 break;
                             }
@@ -478,6 +519,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             break;
                         }
                     }
+                    if (drawn == 0 && lay.isLayerOnMap() == true)
+                        lay.removeLayerFromMap();
                 }
                 else
                 {
@@ -490,16 +533,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         if (bounds.contains(pt))
                         {
                             feature.getPolygonStyle().setStrokeColor(Color.YELLOW);
-                            inView.addFeature(feature);
+                            if (lay.isLayerOnMap() == false)
+                                lay.addLayerToMap();
+                            drawn = 1;
                             break;
                         }
                     }
+                    if (drawn == 0 && lay.isLayerOnMap() == true)
+                        lay.removeLayerFromMap();
+                    if (drawn == 1)
+                        drawn = 0;
                 }
             }
         }
 
-        for (GeoJsonFeature feature : layer2.getFeatures())
+        for (GeoJsonLayer lay: parks)
         {
+            if (wipe == 1)
+            {
+                lay.removeLayerFromMap();
+                continue;
+            }
+            feature = lay.getFeatures().iterator().next();
             if (feature.hasGeometry())
             {
                 geo = feature.getGeometry();
@@ -512,8 +567,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         while (it.hasNext() == true) {
                             pt = it.next();
                             if (bounds.contains(pt)) {
-                                feature.getPolygonStyle().setStrokeColor(Color.MAGENTA);
-                                inView.addFeature(feature);
+                                feature.getPolygonStyle().setStrokeColor(Color.YELLOW);
+                                if (lay.isLayerOnMap() == false)
+                                    lay.addLayerToMap();
+                                drawn = 1;
                                 flag = 1;
                                 break;
                             }
@@ -523,6 +580,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             break;
                         }
                     }
+                    if (drawn == 0 && lay.isLayerOnMap() == true)
+                        lay.removeLayerFromMap();
                 }
                 else
                 {
@@ -534,16 +593,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         pt = it.next();
                         if (bounds.contains(pt))
                         {
-                            feature.getPolygonStyle().setStrokeColor(Color.MAGENTA);
-                            inView.addFeature(feature);
+                            feature.getPolygonStyle().setStrokeColor(Color.YELLOW);
+                            if (lay.isLayerOnMap() == false)
+                                lay.addLayerToMap();
+                            drawn = 1;
                             break;
                         }
                     }
+                    if (drawn == 0 && lay.isLayerOnMap() == true)
+                        lay.removeLayerFromMap();
+                    if (drawn == 1)
+                        drawn = 0;
                 }
             }
         }
-
-        inView.addLayerToMap();
     }
 
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,8 @@ import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -65,7 +68,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private double dummyFlightLatUpdate=0, dummyFlightLonUpdate=0;
     private boolean flagTurn = false;
     private boolean flagWarning = false;
-
+    Circle mapCircle;
+    CircleOptions circleOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -419,14 +423,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         //Create MarkerOptions object
                         final MarkerOptions markerOptions = new MarkerOptions();
                         markerOptions.position(pos);
+
                         if(Math.abs(dummyFlightLonUpdate-dummyFlightLon) < 0.02){
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft_yellow));
+                            markerOptions.anchor(0.5f,0.5f);
+                            circleOption = new CircleOptions()
+                                    .center(new LatLng(dummyFlightLatUpdate, dummyFlightLonUpdate))
+                                    .radius(2000)
+                                    .strokeColor(Color.YELLOW);
                             if(!flagWarning){
                                 setResultToToast("Warning!!!!!!!!!");
                                 flagWarning = true;
                             }
                         }else{
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft_green));
+                            markerOptions.anchor(0.5f,0.5f);
+                            circleOption = new CircleOptions()
+                                    .center(new LatLng(dummyFlightLatUpdate, dummyFlightLonUpdate))
+                                    .radius(2000)
+                                    .strokeColor(Color.GREEN);
                             flagWarning = false;
                         }
 
@@ -437,10 +452,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 if ( dummyFlightMarker!= null) {
                                     dummyFlightMarker.remove();
                                 }
+
                                 if (checkGpsCoordination(dummyFlightLatUpdate, dummyFlightLonUpdate)) {
 //                                    Log.d("SET","Flight Marker!!!!!!" +dummyFlightLatUpdate +", "+dummyFlightLat);
                                     dummyFlightMarker = mMap.addMarker(markerOptions);
                                 }
+                                if(mapCircle!=null){
+                                    mapCircle.remove();
+                                }
+
+                                mapCircle = mMap.addCircle(circleOption);
                             }
                         });
                     }

@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -25,13 +26,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.geojson.GeoJsonFeature;
-import com.google.maps.android.geojson.GeoJsonLayer;
-import com.google.maps.android.geojson.GeoJsonPointStyle;
 
 import java.util.ArrayList;
-import java.io.IOException;
-import org.json.JSONException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import dji.sdk.FlightController.DJIFlightController;
 import dji.sdk.FlightController.DJIFlightControllerDataType;
@@ -58,7 +56,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private double deviceLat = 0,deviceLon=0;
     private Marker flightMarker = null;
     private double flightLat=0, flightLon=0;
-
+    Timer timer;
+    TimerTask timerTask;
+    final Handler handler = new Handler();
+    private Marker dummyFlightMarker = null;
+    private boolean Flag = false;
+    private double dummyFlightLat=0, dummyFlightLon=0;
+    private double dummyFlightLatUpdate=0, dummyFlightLonUpdate=0;
+    private boolean flagTurn = false;
+    private boolean flagWarning = false;
 
 
     @Override
@@ -112,6 +118,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             showMissingPermissionError();
             mPermissionDenied = false;
         }
+        timerStarter();
     }
 
     private void showMissingPermissionError() {
@@ -146,20 +153,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         //mMap = map;
 
 
-        try {
-            GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.airport, getApplicationContext());
-            layer.addLayerToMap();
-            GeoJsonLayer layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
-            layer2.addLayerToMap();
-           GeoJsonLayer layer3 = new GeoJsonLayer(mMap, R.raw.ca_national_park, getApplicationContext());
-            layer3.addLayerToMap();
-        } catch (IOException e) {
-
-            //e.printStackTrace();
-        } catch (JSONException e) {
-            //e.printStackTrace();
-            System.out.print("ggg");
-        }
+//        try {
+//            GeoJsonLayer layer = new GeoJsonLayer(mMap, R.raw.airport, getApplicationContext());
+//            layer.addLayerToMap();
+//            GeoJsonLayer layer2 = new GeoJsonLayer(mMap, R.raw.military, getApplicationContext());
+//            layer2.addLayerToMap();
+//           GeoJsonLayer layer3 = new GeoJsonLayer(mMap, R.raw.ca_national_park, getApplicationContext());
+//            layer3.addLayerToMap();
+//        } catch (IOException e) {
+//
+//            //e.printStackTrace();
+//        } catch (JSONException e) {
+//            //e.printStackTrace();
+//            System.out.print("ggg");
+//        }
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationChangeListener(myLocationChangeListener);
         enableMyLocation();
@@ -177,10 +184,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
         public void onMyLocationChange(Location location) {
-            Log.d("Location", "LOCATION!!!! "+String.valueOf(location.getLatitude())+", "+location.getLongitude());
+//            Log.d("Location", "LOCATION!!!! "+String.valueOf(location.getLatitude())+", "+location.getLongitude());
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             deviceLat = location.getLatitude();
             deviceLon = location.getLongitude();
+            if(!Flag){
+                dummyFlightLat = deviceLat;
+                dummyFlightLon = deviceLon;
+                dummyFlightLatUpdate = deviceLat + 0.1;
+                dummyFlightLonUpdate = deviceLon + 0.1;
+                Flag = true;
+            }
 //            if(mMap != null){
 //                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
 //            }
@@ -353,7 +367,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             //Create MarkerOptions object
             final MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(pos);
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft));
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft_green));
 
 //            markerOptions.title("Wind Speed: "+String.valueOf(result.get(i).windSpeed));
 
@@ -371,5 +385,67 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
             });
         }
+    }
+
+    public void timerStarter(){
+        timer = new Timer();
+        initTimerTask();
+        timer.schedule(timerTask, 3000, 2000);
+
+    }
+
+    public void initTimerTask(){
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+//                        Log.d("Timer", "TIMER !!!!!!!!!!!!");
+                        if(flagTurn == false){
+                            dummyFlightLatUpdate -= 0.005;
+                            dummyFlightLonUpdate -= 0.005;
+//                            Log.d("SET","Flight right!!!!!!" +dummyFlightLatUpdate +", "+dummyFlightLat);
+                            if(dummyFlightLatUpdate <= dummyFlightLat - 0.1) flagTurn = true;
+                        }else {
+                            dummyFlightLatUpdate += 0.005;
+                            dummyFlightLonUpdate += 0.005;
+//                            Log.d("SET","Flight left!!!!!!" +dummyFlightLatUpdate +", "+dummyFlightLat);
+                            if(dummyFlightLatUpdate >= dummyFlightLat + 0.1) flagTurn = false;
+                        }
+
+                        LatLng pos = new LatLng(dummyFlightLatUpdate, dummyFlightLonUpdate);
+//            Log.d("SET","setWeatherData!!!!!!" +String.valueOf(result.get(i).lat));
+                        //Create MarkerOptions object
+                        final MarkerOptions markerOptions = new MarkerOptions();
+                        markerOptions.position(pos);
+                        if(Math.abs(dummyFlightLonUpdate-dummyFlightLon) < 0.02){
+                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft_yellow));
+                            if(!flagWarning){
+                                setResultToToast("Warning!!!!!!!!!");
+                                flagWarning = true;
+                            }
+                        }else{
+                            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft_green));
+                            flagWarning = false;
+                        }
+
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if ( dummyFlightMarker!= null) {
+                                    dummyFlightMarker.remove();
+                                }
+                                if (checkGpsCoordination(dummyFlightLatUpdate, dummyFlightLonUpdate)) {
+//                                    Log.d("SET","Flight Marker!!!!!!" +dummyFlightLatUpdate +", "+dummyFlightLat);
+                                    dummyFlightMarker = mMap.addMarker(markerOptions);
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+        };
     }
 }

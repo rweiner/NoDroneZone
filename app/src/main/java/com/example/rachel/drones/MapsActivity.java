@@ -372,7 +372,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             final MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(pos);
             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.aircraft_green));
-
+            markerOptions.anchor(0.5f,0.5f);
 //            markerOptions.title("Wind Speed: "+String.valueOf(result.get(i).windSpeed));
 
             runOnUiThread(new Runnable() {
@@ -385,6 +385,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     if (checkGpsCoordination(flightLat, flightLon)) {
                         flightMarker = mMap.addMarker(markerOptions);
+                        mMap.addCircle(new CircleOptions()
+                                .center(new LatLng(flightLat, flightLon))
+                                .radius(1000)
+                                .strokeColor(Color.GREEN) );
                     }
                 }
             });

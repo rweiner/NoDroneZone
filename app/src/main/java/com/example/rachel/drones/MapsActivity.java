@@ -79,7 +79,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GeoJsonLayer layer3;
     private GeoJsonLayer inView;
 
-
+    private CameraPosition lastCameraPosition;
 
 
     @Override
@@ -399,10 +399,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void onCameraChange (CameraPosition position)
     {
+        lastCameraPosition = position;
         if (position.zoom < 9) {
             inView.removeLayerFromMap();
             return;
         }
+
+        if(lastCameraPosition.zoom == position.zoom) {
+      
+            return;
+        }
+
 
         Projection proj = mMap.getProjection();
         VisibleRegion vis = proj.getVisibleRegion();

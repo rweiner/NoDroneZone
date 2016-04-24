@@ -123,7 +123,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
@@ -224,6 +224,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnCameraChangeListener(this);
         mMap.setOnMyLocationChangeListener(myLocationChangeListener);
         enableMyLocation();
+
+
+
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
@@ -284,9 +287,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void initFlightController() {
 
         DJIBaseProduct product = DJIDemoApplication.getProductInstance();
-//        setResultToToast("initFlightController");
-        if(product == null) setResultToToast("product == null");
-//        if(!product.isConnected())setResultToToast("product.isConnected()");
+        //setResultToToast("initFlightController");
+        //if(product == null) setResultToToast("product == null");
+        //if(!product.isConnected())setResultToToast("product.isConnected()");
         if (product != null && product.isConnected()) {
             setResultToToast("product != null && product.isConnected()");
             if (product instanceof DJIAircraft) {
@@ -549,6 +552,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }
                     if (drawn == 0 && lay.isLayerOnMap() == true)
                         lay.removeLayerFromMap();
+                    if (drawn == 1)
+                        drawn = 0;
                 }
                 else
                 {
@@ -610,6 +615,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }
                     if (drawn == 0 && lay.isLayerOnMap() == true)
                         lay.removeLayerFromMap();
+                    if (drawn == 1)
+                        drawn = 0;
                 }
                 else
                 {
@@ -654,15 +661,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     public void run() {
 //                        Log.d("Timer", "TIMER !!!!!!!!!!!!");
                         if(flagTurn == false){
-                            dummyFlightLatUpdate -= 0.005;
-                            dummyFlightLonUpdate -= 0.005;
+                            dummyFlightLatUpdate -= 0.0005;
+                            dummyFlightLonUpdate -= 0.0005;
 //                            Log.d("SET","Flight right!!!!!!" +dummyFlightLatUpdate +", "+dummyFlightLat);
-                            if(dummyFlightLatUpdate <= dummyFlightLat - 0.1) flagTurn = true;
+                            if(dummyFlightLatUpdate <= dummyFlightLat - 0.05) flagTurn = true;
                         }else {
-                            dummyFlightLatUpdate += 0.005;
-                            dummyFlightLonUpdate += 0.005;
+                            dummyFlightLatUpdate += 0.0005;
+                            dummyFlightLonUpdate += 0.0005;
 //                            Log.d("SET","Flight left!!!!!!" +dummyFlightLatUpdate +", "+dummyFlightLat);
-                            if(dummyFlightLatUpdate >= dummyFlightLat + 0.1) flagTurn = false;
+                            if(dummyFlightLatUpdate >= dummyFlightLat + 0.05) flagTurn = false;
                         }
 
                         LatLng pos = new LatLng(dummyFlightLatUpdate, dummyFlightLonUpdate);
@@ -676,7 +683,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             markerOptions.anchor(0.5f,0.5f);
                             circleOption = new CircleOptions()
                                     .center(new LatLng(dummyFlightLatUpdate, dummyFlightLonUpdate))
-                                    .radius(2000)
+                                    .radius(3000)
                                     .strokeColor(Color.YELLOW);
                             if(!flagWarning){
                                 setResultToToast("Warning!!!!!!!!!");
@@ -687,7 +694,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             markerOptions.anchor(0.5f,0.5f);
                             circleOption = new CircleOptions()
                                     .center(new LatLng(dummyFlightLatUpdate, dummyFlightLonUpdate))
-                                    .radius(2000)
+                                    .radius(3000)
                                     .strokeColor(Color.GREEN);
                             flagWarning = false;
                         }

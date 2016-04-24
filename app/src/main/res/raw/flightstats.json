@@ -31,7 +31,7 @@
 			"callsign" : "SWA741",
 			"source" : "derived",
 			"positions" : [{
-					"lon" : -117.8833,
+					"lon" : -118.5833,
 					"lat" : 33.65,
 					"speedMph" : 169,
 					"altitudeFt" : 1700,
